@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Samuel🎂!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent: #FFE66D;
+      --light: #F7FFF7;
+      --dark: #292F36;
+      --text: #4A4A4A;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 1.5s ease;
+    }
+    
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: blue ;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .name {
+      display: inline-block;
+      background: linear-gradient(120deg, var(--primary), blue);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--dark);
+      opacity: 0.8;
+    }
+    
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      aspect-ratio: 1/1;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .photo-card:nth-child(2) { animation-delay: 0.2s; }
+    .photo-card:nth-child(3) { animation-delay: 0.4s; }
+    .photo-card:nth-child(4) { animation-delay: 0.6s; }
+    
+    .photo-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .photo-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 1.5rem 1rem 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .photo-card:hover .photo-caption {
+      opacity: 1;
+    }
+    
+    .message-box {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    
+    .message-box::before {
+      content: '"';
+      font-family: monospace ;
+      font-size: 8rem;
+      color: var(--accent);
+      position: absolute;
+      top: -2rem;
+      left: 1rem;
+      line-height: 1;
+      opacity: 0.2;
+    }
+    
+    .message {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-top: 1.5rem;
+    }
+    
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      animation: float linear infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+    
+    .btn-music {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 1.5rem;
+    }
+    
+    .btn-music:hover {
+      transform: scale(1.1);
+      background: var(--secondary);
+      box-shadow: 0 6px 25px rgba(78, 205, 196, 0.6);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text);
+      opacity: 0.8;
+      font-size: 0.9rem;
+      animation: fadeIn 2.5s ease;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .message-box {
+        padding: 2rem 1rem;
+      }
+      
+      .message-box::before {
+        font-size: 5rem;
+        top: -1rem;
+      }
+    }
+    /* Gentle heartbeat animation for photos */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.03); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.photo-card:hover {
+  animation: heartbeat 1.5s infinite;
+}
+
+/* Floating kisses animation */
+.kiss {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float-up 4s linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.birthday-wish {
+  text-align: center;
+  margin: 3rem 0;
+}
+#wishBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(214, 51, 108, 0.4);
+}
+#wishBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(214, 51, 108, 0.6);
+}
+.hidden {
+  display: none;
+  margin-top: 2rem;
+  animation: fadeIn 1s ease;
+}
+.special-message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: black;
+  margin-top: 1rem;
+}
+
+  </style>
+</head>
+<body>
+  <div class="bubbles" id="bubbles"></div>
+  
+  <div class="container">
+    <header>
+     <h1>Happy Birthday<span class="name">Samuel🎂</span>!</h1>
+      <p class="subtitle">The lord bless your new year, 😊 Age graciously🙏 </p>
+    </header>
+    
+    <div class="photo-grid">
+      <div class="photo-card">
+        <img src="sam.jpg" alt=" smiling">
+        <div class="photo-caption"> SMART</div>
+      </div>
+      <div class="photo-card">
+        <img src="sam.jpg" alt=" laughing">
+        <div class="photo-caption">OUTSPOKEN </div>
+      </div>
+      <div class="photo-card">
+        <img src="sam.jpg" alt=" thoughtful">
+        <div class="photo-caption">CALM </div>
+      </div>
+      <div class="photo-card">
+        <img src="sam.jpg" alt=" celebrating">
+        <div class="photo-caption">LIKE MONEY 💵 SHA😂</div>
+      </div>
+    </div>
+    
+    <div class="message-box">
+      <p class="message">
+        To one of the smartest, most intelligent minds I know.
+Your sharp thinking, calm spirit, and quiet brilliance set you apart.
+Keep being you — focused, wise, and destined for greatness.
+This is your year to shine brighter than ever! 💡👑
+
+      </p>
+      <div class="signature">With all my love</div>
+    </div>
+    
+    
+    <div class="birthday-wish">
+  <button id="wishBtn">Open Your Special Wish</button>
+  <div id="hiddenWish" class="hidden">
+    <p>Samuel, my wish for you is...</p>
+    <p class="special-message">🎉 🎉 Happy Birthday, Samuel! 🙏
+May your mind remain sharp, your path clear, and your future bright.
+As you grow in years, may you also grow in wisdom, grace, and greatness.
+I pray that doors of divine favor open before you, and that you walk boldly into every good thing meant for you.
+May your life be filled with peace, purpose, and endless possibilities.
+You are destined for more — keep rising! 👑✨
+</p>
+  </div>
+</div>
+
+
+    <footer>
+    From your humble friend, Taiwo David🤗
+    </footer>
+  </div>
+  
+  <button class="btn-music" id="musicBtn">🎵</button>
+  
+  <audio id="birthdaySong" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+  
+  <script>
+    // Create bubbles
+    function createBubbles() {
+      const bubblesContainer = document.getElementById('bubbles');
+      const bubbleCount = 30;
+      
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        
+        // Random size between 10 and 50px
+        const size = Math.random() * 40 + 10;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        
+        // Random position
+        bubble.style.left = `${Math.random() * 100}vw`;
+        
+        // Random animation duration between 10s and 20s
+        const duration = Math.random() * 10 + 10;
+        bubble.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        bubble.style.animationDelay = `${Math.random() * 10}s`;
+        
+        // Slightly different opacity for variety
+        bubble.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        bubblesContainer.appendChild(bubble);
+      }
+    }
+    
+    // Music player
+    const audio = document.getElementById('birthdaySong');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+    
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.textContent = '🎵';
+      } else {
+        audio.play();
+        musicBtn.textContent = '🔊';
+      }
+      isPlaying = !isPlaying;
+    });
+    
+    // Initialize
+    window.addEventListener('load', () => {
+      createBubbles();
+      
+      // Animate photo cards sequentially
+      const cards = document.querySelectorAll('.photo-card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+      });
+    });
+    
+    // Make bubbles responsive
+    window.addEventListener('resize', () => {
+      document.getElementById('bubbles').innerHTML = '';
+      createBubbles();
+    });
+   
+
+document.getElementById('wishBtn').addEventListener('click', function() {
+  this.style.display = 'none';
+  document.getElementById('hiddenWish').classList.remove('hidden');
+});
+    
+    
+    
+  </script>
+</body>
+</html>
